@@ -1,9 +1,11 @@
 #include "main.h"
+
  /**
   *_isdigit: if is a digit
   *@C:print int
   *Return: Always 0.
   */
+
 int _isdigit(int c)
 {
   if (c>=48 && c<=57)
