@@ -1,20 +1,18 @@
 #include "main.h"
+#include <stdio.h>
+
 /**
- * main - Entry point
+ * main - check the code.
  *
- * Return: Always 0 (Success)
+ * Return: Always 0.
  */
 int main(void)
 {
-char Array[] = "_putchar\n";
-int al = 0;
+    char c;
 
-while (al < 9)
-{
-_putchar(Array[al]);
-al++;
-}
-
-return (0);
-
+    c = 'A';
+    printf("%c: %d\n", c, _isupper(c));
+    c = 'a';
+    printf("%c: %d\n", c, _isupper(c));
+    return (0);
 }
