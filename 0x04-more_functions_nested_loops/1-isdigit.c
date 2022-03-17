@@ -2,7 +2,7 @@
 /**
  *_isdigit - checks for a digit
  *
- *Description:0 through 9
+ *Description:48 through 57
  *
  *@c:input
  *
