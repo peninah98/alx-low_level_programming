@@ -1,16 +1,16 @@
-#include "main.h"
+#include "holberton.h"
 /**
- * 2-mul.c- multiply
+ *mul - multiplies two integers and returns the product
  *
- *Description:multiply two numbers
+ *@a:input int
  *
- *@a:input
+ *@b:input int
  *
- *@b:input
- *Return:1 - digit 0 - otherwise
+ *Description:a multiply by b
+ *
+ *Return:product
  *
  */
-
 int mul(int a, int b)
 {
 	int product;
