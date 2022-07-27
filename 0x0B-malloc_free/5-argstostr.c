@@ -1,71 +1,45 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * _strcat - Concat string, src appended to dest
+ * argstostr - Concatenates all arguments of the program into a string;
+ *             arguments are separated by a new line in the string.
+ * @ac: The number of arguments passed to the program.
+ * @av: An array of pointers to the arguments.
  *
- * @dest: Destination string
- * @src: Source string
- * Return: Concat newString to dest
+ * Return: If ac == 0, av == NULL, or the function fails - NULL.
+ *         Otherwise - a pointer to the new string.
  */
-char *_strcat(char *dest, char *src)
-{
-        int a, b;
-
-        for (a = 0; dest[a] != '\0'; a++)
-                ;
-        for (b = 0; src[b] != '\0'; b++)
-        {
-                dest[a] = src[b];
-                a++;
-        }
-        return (dest);
-}
-
-/**
- * _strlen - Return the number of the length of the string
- *
- * @s: This is the string to check
- *
- * Return: Return the length of the string
- */
-int _strlen(char *s)
-{
-	int a;
-
-	for (a = 0; s[a] != '\0'; a++)
-		;
-	return (a);
-}
-
-/**
- * argstostr - Concats argv to new string
- *
- * @ac: Argument count
- * @av: Arguments
- *
- * Return: Returns a pointer to a new string, or NULL if it fails
- */
-
 char *argstostr(int ac, char **av)
 {
-	int index, sumString;
-	char *newString;
-
-	sumString = 1;
+	char *str;
+	int arg, byte, index, size = ac;
 
 	if (ac == 0 || av == NULL)
-		return (0);
-	for (index = 0; index < ac && av[index]; index++)
-	{
-		sumString += _strlen(av[index]);
-	}
-	newString = malloc((sumString * sizeof(char)) + ac);
-	for (index = 0; index < ac && av[index]; index++)
-	{
-		newString = _strcat(newString, av[index]);
-		newString = _strcat(newString, "\n");
-	}
-	if (newString == NULL)
 		return (NULL);
-	return (newString);
+
+	for (arg = 0; arg < ac; arg++)
+	{
+		for (byte = 0; av[arg][byte]; byte++)
+			size++;
+	}
+
+	str = malloc(sizeof(char) * size + 1);
+
+	if (str == NULL)
+		return (NULL);
+
+	index = 0;
+
+	for (arg = 0; arg < ac; arg++)
+	{
+		for (byte = 0; av[arg][byte]; byte++)
+			str[index++] = av[arg][byte];
+
+		str[index++] = '\n';
+	}
+
+	str[size] = '\0';
+
+	return (str);
 }
