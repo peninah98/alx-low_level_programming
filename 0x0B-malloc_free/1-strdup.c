@@ -3,50 +3,22 @@
 #include <stdlib.h>
 
 /**
- * str_concat - function that concatenates two strings.
- *              
- *             
+ * malloc_checked - function that allocates memory using malloc.
  *
- * @s1: This is the output string
- * @s2: This is the input string
+ * @b: This is the length to allocate in the memory
  *
- * Return: The returned pointer should point to a newly allocated space in
- *         memory which contains the contents of s1, followed by the contents 
- *         of s2, and null terminated
+ * Return: Returns a pointer to the allocated memory
+ *         if malloc fails, the malloc_checked function should cause normal 
+ *         process
+ *         termination with a status value of 98
+ *
  */
-
-char *str_concat(char *s1, char *s2)
+void *malloc_checked(unsigned int b)
 {
-	int a, b;
-	char *s;
+	void *p;
 
-	if (s1 == NULL)
-	{
-		s1 = "";
-	}
-	if (s2 == NULL)
-	{
-		s2 = "";
-	}
-	for (a = 0; s1[a] != '\0'; a++)
-	{
-	}
-	for (b = 0; s2[b] != '\0'; b++)
-	{
-	}
-
-	s = (char *)  malloc(((a + b) + 1) * sizeof(char));
-
-	if (s == NULL)
-		return (NULL);
-	for (a = 0; s1[a] != '\0'; a++)
-	{
-		s[a] = s1[a];
-	}
-	for (b = 0; s2[b] != '\0'; b++)
-	{
-		s[a] = s2[b];
-		a++;
-	}
-	return (s);
+	p = malloc(b);
+	if (p == NULL)
+		exit(98);
+	return (p);
 }
