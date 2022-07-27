@@ -1,46 +1,28 @@
+#include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include "holberton.h"
 
 /**
- * _strdup - copy of the string given as a parameter.
+ * create_array - function that creates an array of chars, and initializes it
+ *                with a specific char.
  *
- * @str: unsigned int
+ * @size: This is the length of the array
+ * @c: This is the input character
  *
- * Return: char pointer
+ * Return: An Array Initialized with the specific char
  */
 
-char *_strdup(char *str)
+char *create_array(unsigned int size, char c)
 {
-	unsigned int counter1, counter2;
-	char *strCopy;
+	unsigned int a;
+	char *s;
 
-	counter1 = 0;
-	counter2 = 0;
-
-	if (str == NULL)
-	{
-		return (0);
-	}
-
-	while (str[counter1] != '\0')
-	{
-		counter1++;
-	}
-
-	strCopy = malloc(sizeof(char) * (counter1 + 1));
-
-	if (strCopy == NULL)
-	{
+	s = (char *) malloc(size * sizeof(char));
+	if (s == NULL)
 		return (NULL);
-	}
-
-	while (counter2 < counter1)
+	for (a = 0; a < size; a++)
 	{
-		strCopy[counter2] = str[counter2];
-		counter2++;
+		s[a] = c;
 	}
-
-	strCopy[counter2] = '\0';
-
-	return (strCopy);
+	return (s);
 }
